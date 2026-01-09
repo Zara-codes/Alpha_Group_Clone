@@ -1,5 +1,5 @@
-import React from "react"
-import { MdEmail, MdPhone, MdSearch } from "react-icons/md"
+import React, { useState } from "react"
+import { MdEmail, MdPhone, MdMenu, MdClose } from "react-icons/md"
 import {
   FaFacebookF,
   FaTwitter,
@@ -9,82 +9,117 @@ import {
 } from "react-icons/fa"
 
 const ContactHeader = () => {
+  const [open, setOpen] = useState(false)
+
   return (
-    <header className="w-full">
+    <header className="w-full overflow-x-hidden">
 
-      {/* 🔹 Top Info Bar */}
-      <div className="bg-gray-100 text-gray-800 text-sm">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex h-10 items-center justify-between">
+      {/* 🔹 TOP BAR (desktop only) */}
+      <div className="hidden md:block bg-gray-100 text-sm text-gray-700">
+        <div className="mx-auto max-w-7xl px-6 py-2">
+          <div className="flex flex-wrap justify-between gap-4">
 
-            {/* Contact Info */}
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <MdEmail className="text-blue-500" />
-                <span>email@companyname.com.np</span>
+            {/* Contact */}
+            <div className="flex flex-wrap gap-6">
+              <div className="flex items-center gap-2 max-w-xs">
+                <MdEmail className="text-blue-600 shrink-0" />
+                <span className="break-all text-xs">
+                  email@companyname.com.np
+                </span>
               </div>
+
               <div className="flex items-center gap-2">
-                <MdPhone className="text-blue-500" />
-                <span>+977 9876543210</span>
+                <MdPhone className="text-blue-600 shrink-0" />
+                <span className="text-xs">+977 9876543210</span>
               </div>
             </div>
 
-            {/* Social Media + Search */}
-            <div className="flex items-center gap-4">
-              <a href="#" className="hover:text-blue-600 transition">
-                <FaFacebookF />
-              </a>
-              <a href="#" className="hover:text-blue-600 transition">
-                <FaTwitter />
-              </a>
-              <a href="#" className="hover:text-blue-600 transition">
-                <FaLinkedinIn />
-              </a>
-              <a href="#" className="hover:text-blue-600 transition">
-                <FaInstagram />
-              </a>
-              <a href="#" className="hover:text-blue-600 transition">
-                <FaPinterestP />
-              </a>
-
-              {/* Search Button */}
-              <button className="ml-2 rounded-full border border-gray-300 p-1.5 hover:bg-gray-200 transition">
-                <MdSearch className="text-gray-700" />
-              </button>
+            {/* Social */}
+            <div className="flex flex-wrap items-center gap-4">
+              {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaPinterestP].map(
+                (Icon, i) => (
+                  <Icon
+                    key={i}
+                    className="cursor-pointer hover:text-blue-600"
+                  />
+                )
+              )}
             </div>
 
           </div>
         </div>
       </div>
 
-      {/* 🔹 Main Navbar */}
+      {/* 🔹 NAVBAR */}
       <div className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-6">
-          <nav className="flex h-16 items-center justify-between">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="flex min-h-[64px] items-center justify-between">
 
             {/* Logo */}
-            <div className="text-xl font-bold text-blue-600 cursor-pointer">
+            <div className="text-lg font-bold text-blue-600">
               AlphaDev
             </div>
 
-            {/* Nav Links */}
-            <ul className="flex items-center gap-8 text-sm font-medium text-gray-700">
-              <li className="hover:text-blue-600 cursor-pointer">Home</li>
-              <li className="hover:text-blue-600 cursor-pointer">About</li>
-              <li className="hover:text-blue-600 cursor-pointer">Services</li>
-              <li className="hover:text-blue-600 cursor-pointer">Teams</li>
-              <li className="hover:text-blue-600 cursor-pointer">Blog</li>
-              <li>
-                <button className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition">
-                  Contact
-                </button>
-              </li>
+            {/* Burger */}
+            <button
+              className="md:hidden text-2xl"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <MdClose /> : <MdMenu />}
+            </button>
+
+            {/* Desktop Menu */}
+            <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+              {["Home", "About", "Services", "Teams", "Blog"].map(item => (
+                <li key={item} className="cursor-pointer hover:text-blue-600">
+                  {item}
+                </li>
+              ))}
+              <button className="rounded-md bg-blue-600 px-4 py-2 text-white">
+                Contact
+              </button>
             </ul>
 
-          </nav>
+          </div>
         </div>
-      </div>
 
+        {/* 🔹 MOBILE MENU */}
+        {/* 🔹 MOBILE MENU */}
+        {open && (
+          <div className="md:hidden bg-white border-t overflow-x-hidden">
+            <ul className="flex flex-col gap-4 px-4 py-6 text-sm text-gray-700 overflow-hidden">
+
+              {["Home", "About", "Services", "Teams", "Blog"].map(item => (
+                <li
+                  key={item}
+                  className="cursor-pointer hover:text-blue-600"
+                  onClick={() => setOpen(false)}
+                >
+                  {item}
+                </li>
+              ))}
+
+              {/* ✅ FIXED CONTACT BUTTON */}
+              <button
+                className="
+          w-full 
+          box-border
+          rounded-md 
+          bg-blue-600 
+          py-2 
+          text-white 
+          hover:bg-blue-700
+        "
+              >
+                Contact
+              </button>
+
+            </ul>
+          </div>
+        )}
+
+
+      </div>
     </header>
   )
 }
