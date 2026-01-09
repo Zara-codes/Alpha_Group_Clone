@@ -1,12 +1,19 @@
-import { MdEmail, MdPhone } from "react-icons/md"
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa"
+import React from "react"
+import { MdEmail, MdPhone, MdSearch } from "react-icons/md"
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+  FaPinterestP,
+} from "react-icons/fa"
 
-const Header = () => {
+const ContactHeader = () => {
   return (
     <header className="w-full">
 
       {/* 🔹 Top Info Bar */}
-      <div className="bg-gray-900 text-gray-300 text-sm">
+      <div className="bg-gray-100 text-gray-800 text-sm">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex h-10 items-center justify-between">
 
@@ -14,7 +21,7 @@ const Header = () => {
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <MdEmail className="text-blue-500" />
-                <span>info@alpha.com.np</span>
+                <span>email@companyname.com.np</span>
               </div>
               <div className="flex items-center gap-2">
                 <MdPhone className="text-blue-500" />
@@ -22,20 +29,28 @@ const Header = () => {
               </div>
             </div>
 
-            {/* Social Media */}
+            {/* Social Media + Search */}
             <div className="flex items-center gap-4">
-              <a href="#" className="hover:text-blue-500 transition">
+              <a href="#" className="hover:text-blue-600 transition">
                 <FaFacebookF />
               </a>
-              <a href="#" className="hover:text-blue-500 transition">
+              <a href="#" className="hover:text-blue-600 transition">
                 <FaTwitter />
               </a>
-              <a href="#" className="hover:text-blue-500 transition">
+              <a href="#" className="hover:text-blue-600 transition">
                 <FaLinkedinIn />
               </a>
-              <a href="#" className="hover:text-blue-500 transition">
+              <a href="#" className="hover:text-blue-600 transition">
                 <FaInstagram />
               </a>
+              <a href="#" className="hover:text-blue-600 transition">
+                <FaPinterestP />
+              </a>
+
+              {/* Search Button */}
+              <button className="ml-2 rounded-full border border-gray-300 p-1.5 hover:bg-gray-200 transition">
+                <MdSearch className="text-gray-700" />
+              </button>
             </div>
 
           </div>
@@ -48,7 +63,7 @@ const Header = () => {
           <nav className="flex h-16 items-center justify-between">
 
             {/* Logo */}
-            <div className="text-xl font-bold text-blue-600">
+            <div className="text-xl font-bold text-blue-600 cursor-pointer">
               AlphaDev
             </div>
 
@@ -59,8 +74,6 @@ const Header = () => {
               <li className="hover:text-blue-600 cursor-pointer">Services</li>
               <li className="hover:text-blue-600 cursor-pointer">Teams</li>
               <li className="hover:text-blue-600 cursor-pointer">Blog</li>
-
-              {/* Contact Button */}
               <li>
                 <button className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition">
                   Contact
@@ -76,4 +89,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default ContactHeader
