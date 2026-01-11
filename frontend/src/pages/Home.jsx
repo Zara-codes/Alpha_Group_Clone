@@ -8,14 +8,17 @@ import OurAgencies from '../components/OurAgencies'
 import OurSolutions from '../components/OurSolutions'
 import IndustriesWeServe from '../components/IndustriesWeServe'
 import Featured from '../components/Featured'
-import Footer from '../components/Footer'
 import TrustedBy from '../components/Trusted'
 import Testimonials from '../components/Testimonials'
+import Latest from '../components/Latest'
+import CTASection from '../components/CTASection'
+import RecognizedExcellence from '../components/RecognizedExcellence'
+import FeaturedIn from '../components/FeaturedIn'
 
 const Home = () => {
   return (
     <div>
-      <Navbar />
+      
       <HeroSection />
       <AboutUs />
       <OurServices />
@@ -26,7 +29,10 @@ const Home = () => {
       <Featured />
       <TrustedBy />
       <Testimonials />
-      <Footer />
+      <Latest />
+      <CTASection />
+      <RecognizedExcellence />
+      <FeaturedIn />
     </div>
   )
 }
